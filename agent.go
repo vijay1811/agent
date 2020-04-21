@@ -1123,9 +1123,11 @@ func (s *sandbox) startGRPC() {
 	// metadata.
 	grpcContext = s.ctx
 
-	grpcImpl := &agentGRPC{
-		sandbox: s,
-		version: version,
+	grpcImpl := &bublAgentGRPC{
+		agentGRPC: &agentGRPC{
+			sandbox: s,
+			version: version,
+		},
 	}
 
 	var grpcServer *grpc.Server
